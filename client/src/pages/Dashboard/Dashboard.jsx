@@ -7,8 +7,12 @@ import Sent from "./Sent";
 import Trash from "./Trash";
 
 function Dashboard() {
-  return <Inbox />;
-  <Trash />;
-  <Sent />;
+  return (
+    <>
+      <Inbox />
+      <Trash />
+      <Sent />
+    </>
+  );
 }
 export default Dashboard;
