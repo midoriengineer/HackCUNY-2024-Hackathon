@@ -50,14 +50,14 @@ def login_is_required(function):
     return wrapper
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     authorization_url, state = flow.authorization_url()
     session["state"] = state
     return redirect(authorization_url)
 
 
-@app.route("/callback")
+@app.route("/callback", methods=['GET', 'POST'])
 def callback():
     flow.fetch_token(authorization_response=request.url)
     
@@ -77,13 +77,13 @@ def callback():
     
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
-    return redirect("/protected_area")
+    return redirect("http://localhost:3000")
 
 
-@app.route("/logout")
+@app.route("/logout", methods=['GET', 'POST'])
 def logout():
     session.clear()
-    return redirect("/")
+    return redirect("http://localhost:3000")
 
 
 @app.route("/")
@@ -94,7 +94,7 @@ def index():
 @app.route("/protected_area")
 @login_is_required
 def protected_area():
-    return f"Hello {session['name']}! <br/> <a href='/logout'><button>Logout</button></a>"
+    return f"Hello {session['name']}! <br/> Info: {session} <br/> <a href='/logout'><button>Logout</button></a>"
 
 
 # for testing flask and react connection
