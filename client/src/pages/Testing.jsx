@@ -131,6 +131,8 @@ const Testing = () => {
         if (!response.ok) return
 
         const jsonData = await response.json();
+        if (!jsonData) return
+        if (jsonData && !jsonData.credentials_token) return
 
         setGoogleToken(jsonData.credentials_token)
 
