@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, request, session, abort
+from flask import Flask, jsonify, redirect, request, session, abort, render_template
 from flask_cors import CORS
 from google_auth_oauthlib.flow import Flow
 from google.oauth2 import id_token
@@ -7,6 +7,7 @@ from pip._vendor import cachecontrol
 import requests
 import os
 import pathlib
+import json
 
 import cohere
 import pandas as pd
@@ -35,7 +36,7 @@ client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
     scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", 
-            "https://mail.google.com/", "openid"],
+            "https://www.googleapis.com/auth/gmail.modify", "openid"],
     redirect_uri="http://localhost:5000/callback"
                                      )
 
@@ -68,6 +69,18 @@ def callback():
     request_session = requests.session()
     cached_session = cachecontrol.CacheControl(request_session)
     token_request = google.auth.transport.requests.Request(session=cached_session)
+
+    print(credentials.token)
+
+
+    file_path = 'google_access_token.json'
+
+    with open(file_path, 'w') as file:
+        json.dump(
+            {"credentials_token": str(credentials.token),
+             "credentials_id": str(credentials._id_token),
+             "request_token": str(token_request.session.headers.get('Authorization'))
+            }, file, indent=2)
     
     id_info = id_token.verify_oauth2_token(
         id_token=credentials._id_token,
