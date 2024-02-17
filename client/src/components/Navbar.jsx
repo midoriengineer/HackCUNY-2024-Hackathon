@@ -24,6 +24,13 @@ const Navbar = () => {
     , []);
 
 
+    const handleLogout = () => {
+        try{
+            window.location.href = "http://localhost:5000/logout"
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     return (
         <header>
@@ -44,9 +51,7 @@ const Navbar = () => {
                             <Link to="/login">
                                 Login
                             </Link>
-                        </li> :  <li className="p-4"><Link to="/logout">
-                                Logout
-                            </Link></li>}
+                        </li> :  <li className="p-4"><button onClick={handleLogout}>Logout</button></li>}
                           
                     </ul>
                 </div>
