@@ -1,12 +1,12 @@
 import React from "react";
 
-function Sent() {
+function Spam() {
   return (
-    <div className="sent">
-      <h3>Sent</h3>
+    <div className="spam">
+      <h3>Spam</h3>
       {/* Add  sent component here */}
     </div>
   );
 }
 
-export default Sent;
+export default Spam;
