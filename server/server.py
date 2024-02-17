@@ -25,7 +25,8 @@ if __name__ == "__main__":
 
 
 
-
+co = cohere.Client(os.environ.get("COHERE_API_KEY"))
+pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"), environment="venv")
 client = OpenAI()
 
 
