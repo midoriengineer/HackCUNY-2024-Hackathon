@@ -1,8 +1,6 @@
 import { Link, useNavigate} from "react-router-dom";
 import gotPhishLogo from "../images/cropped-logo.png"
 
-
-
 const Navbar = () => {
 
     return (
