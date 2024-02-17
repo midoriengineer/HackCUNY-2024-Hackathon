@@ -128,9 +128,7 @@ const Testing = () => {
 
         const response = await fetch(filePath);
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        if (!response.ok) return
 
         const jsonData = await response.json();
 
