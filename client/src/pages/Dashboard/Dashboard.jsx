@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Inbox from "./Inbox";
-import Sent from "./Spam";
+import Spam from "./Spam";
 import Trash from "./Trash";
 
 function Dashboard() {
