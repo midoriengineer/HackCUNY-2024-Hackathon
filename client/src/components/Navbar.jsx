@@ -11,7 +11,11 @@ const Navbar = () => {
                 </div>
                 <div className="text-white">
                     <ul className="flex">
-                        <li className="p-4">Home</li>
+                        <li className="p-4">
+                            <Link to="/">
+                                Home
+                            </Link>
+                        </li>
                         <li className="p-4">Dashboard</li>
                         <li className="p-4">
                             <Link to="/login">
