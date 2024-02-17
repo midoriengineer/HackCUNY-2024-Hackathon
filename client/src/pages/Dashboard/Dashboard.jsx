@@ -18,7 +18,7 @@ function Dashboard() {
       <div>
         <Sidebar onPageChange={handlePageChange} />
         {currentPage === "inbox" && <Inbox />}
-        {currentPage === "spam" && <Sent />}
+        {currentPage === "spam" && <Spam />}
         {currentPage === "trash" && <Trash />}
       </div>
     </div>
