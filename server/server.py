@@ -8,6 +8,12 @@ import requests
 import os
 import pathlib
 import json
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+import asyncio
 
 import cohere
 import pandas as pd
@@ -35,7 +41,8 @@ token_file_path = 'google_access_token.json'
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
     scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", 
-            "https://www.googleapis.com/auth/gmail.modify", "openid"],
+            "https://www.googleapis.com/auth/gmail.modify", "https://mail.google.com/",
+            'https://www.googleapis.com/auth/drive.metadata.readonly',"openid"],
     redirect_uri="http://localhost:5000/callback"
                                      )
 
@@ -54,7 +61,7 @@ def login_is_required(function):
 def login():
     authorization_url, state = flow.authorization_url()
     session["state"] = state
-    return redirect(authorization_url)
+    return redirect(authorization_url) # redirects to Google's OAuth 2.0 server
 
 
 @app.route("/callback", methods=['GET', 'POST'])
@@ -65,6 +72,13 @@ def callback():
         abort(500) # state doesn't match
     
     credentials = flow.credentials
+    session["credentials"] = {
+    'token': credentials.token,
+    'refresh_token': credentials.refresh_token,
+    'token_uri': credentials.token_uri,
+    'client_id': credentials.client_id,
+    'client_secret': credentials.client_secret,
+    'scopes': credentials.scopes}
     request_session = requests.session()
     cached_session = cachecontrol.CacheControl(request_session)
     token_request = google.auth.transport.requests.Request(session=cached_session)
@@ -80,6 +94,18 @@ def callback():
         request=token_request,
         audience=GOOGLE_CLIENT_ID
     )
+    
+    # After obtaining an access token, authorize Gmail API requests for that user
+    service = build("gmail", "v1", credentials=credentials)
+    results = service.users().labels().list(userId="me").execute()
+    labels = results.get("label", [])
+    
+    if not labels:
+        print("No labels found.")
+        return redirect("http://localhost:3000")
+    print("Labels:")
+    for label in labels:
+        print(label["name"])
     
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
@@ -110,6 +136,7 @@ def testing():
     return jsonify(
         {"testing1": "abc", "testing2": "def"}
     )
+    
 @app.route("/google_token", methods=['GET'])
 def google_token():
     file_path = os.path.join(os.path.dirname(__file__), "google_access_token.json")
