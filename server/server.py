@@ -15,6 +15,15 @@ import os
 from pinecone import Pinecone, ServerlessSpec
 from openai import OpenAI
 
+import cohere
+import pandas as pd
+import numpy as np
+import os
+from pinecone import Pinecone, ServerlessSpec
+from openai import OpenAI
+
+
+
 app = Flask(__name__)
 app.secret_key = "XT5PUdwqegbndhgfsbdvH5m79D"
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -96,9 +105,9 @@ def testing():
         {"testing1": "abc", "testing2": "def"}
     )
 
-
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 co = cohere.Client(os.environ.get("COHERE_API_KEY"))
