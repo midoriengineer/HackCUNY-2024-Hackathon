@@ -78,8 +78,7 @@ def callback():
     with open(file_path, 'w') as file:
         json.dump(
             {"credentials_token": str(credentials.token),
-             "credentials_id": str(credentials._id_token),
-             "request_token": str(token_request.session.headers.get('Authorization'))
+             "credentials_id": str(credentials._id_token)
             }, file, indent=2)
     
     id_info = id_token.verify_oauth2_token(
