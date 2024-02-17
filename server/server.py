@@ -15,13 +15,6 @@ import os
 from pinecone import Pinecone, ServerlessSpec
 from openai import OpenAI
 
-import cohere
-import pandas as pd
-import numpy as np
-import os
-from pinecone import Pinecone, ServerlessSpec
-from openai import OpenAI
-
 
 
 app = Flask(__name__)
