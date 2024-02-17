@@ -19,16 +19,16 @@ from dotenv import load_dotenv
 load_dotenv()
 pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"), environment="venv")
 co = cohere.Client(os.environ.get("COHERE_API_KEY"))
+GOOGLE_CLIENT_ID = os.environ.get("CLIENT_ID")
 client = OpenAI()
 
 
 
 app = Flask(__name__)
 app.secret_key = "XT5PUdwqegbndhgfsbdvH5m79D"
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 CORS(app)
 
-# Sign In with Google setup
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 GOOGLE_CLIENT_ID = os.environ.get("CLIENT_ID")
 client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
 
