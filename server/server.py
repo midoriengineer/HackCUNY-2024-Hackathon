@@ -62,6 +62,35 @@ def login():
     session["state"] = state
     return redirect(authorization_url) # redirects to Google's OAuth 2.0 server
 
+@app.route('/test')
+def test_api_request():
+    if 'credentials' not in session:
+        return redirect('login')
+
+    # Load credentials from the session.
+    credentials = google.oauth2.credentials.Credentials(
+        **session['credentials'])
+    
+    service = build('gmail', 'v1', credentials=credentials)
+    result = service.users().messages().list(userId='me').execute()
+    messages = result.get('messages')
+
+    # TODO: Parse all email messages for proper display
+           
+    # Save credentials back to session in case access token was refreshed.
+    # ACTION ITEM: In a production app, you likely want to save these
+    #              credentials in a persistent database instead.
+    session['credentials'] = credentials_to_dict(credentials)
+
+    return jsonify(messages)    
+
+def credentials_to_dict(credentials):
+  return {'token': credentials.token,
+          'refresh_token': credentials.refresh_token,
+          'token_uri': credentials.token_uri,
+          'client_id': credentials.client_id,
+          'client_secret': credentials.client_secret,
+          'scopes': credentials.scopes}
 
 @app.route("/callback", methods=['GET', 'POST'])
 def callback():
@@ -94,21 +123,10 @@ def callback():
         audience=GOOGLE_CLIENT_ID
     )
     
-    # After obtaining an access token, authorize Gmail API requests for that user
-    service = build("gmail", "v1", credentials=credentials)
-    results = service.users().labels().list(userId="me").execute()
-    labels = results.get("label", [])
-    
-    if not labels:
-        print("No labels found.")
-        return redirect("http://localhost:3000")
-    print("Labels:")
-    for label in labels:
-        print(label["name"])
-    
+    session['credentials'] = credentials_to_dict(credentials)
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
-    return redirect("http://localhost:3000")
+    return redirect('http://localhost:3000')
 
 
 @app.route("/logout", methods=['GET', 'POST'])
