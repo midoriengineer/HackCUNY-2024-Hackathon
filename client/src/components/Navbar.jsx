@@ -1,4 +1,5 @@
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 import gotPhishLogo from "../images/cropped-logo.png"
 import { useEffect, useState } from "react";
 
@@ -40,19 +41,22 @@ const Navbar = () => {
                 </div>
                 <div className="text-white">
                     <ul className="flex">
-                        <li className="p-4">
-                            <Link to="/">
+                        <li className="mx-4 p-4 border-2 border-white rounded-full font-bold">
+                            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
                                 Home
                             </Link>
                         </li>
-                        <li className="p-4">Dashboard</li>
-                
-                        {!googleToken? <li className="p-4">
-                            <Link to="/login">
+                        <li className="mx-4 p-4 border-2 border-white rounded-full font-bold">Dashboard</li>
+                        <li className="mx-4 p-4 border-2 border-white rounded-full font-bold cursor-pointer">
+                            <LinkScroll to="about-section" smooth={true} duration={800}>
+                                About
+                            </LinkScroll>
+                        </li>
+                        {!googleToken? <li className="mx-4 p-4 border-2 border-white rounded-full font-bold">
+                            <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
                                 Login
                             </Link>
                         </li> :  <li className="p-4"><button onClick={handleLogout}>Logout</button></li>}
-                          
                     </ul>
                 </div>
             </div>
