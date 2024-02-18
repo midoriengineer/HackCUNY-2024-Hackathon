@@ -46,7 +46,11 @@ const Navbar = () => {
                                 Home
                             </Link>
                         </li>
-                        <li className="mx-4 p-4 border-2 border-white rounded-full font-bold">Dashboard</li>
+                        <li className="mx-4 p-4 border-2 border-white rounded-full font-bold">
+                            <Link to="/dashboard" style={{ textDecoration: "none", color: "inherit" }}>
+                                Dashboard
+                            </Link>
+                        </li>
                         <li className="mx-4 p-4 border-2 border-white rounded-full font-bold cursor-pointer">
                             <LinkScroll to="about-section" smooth={true} duration={800}>
                                 About
