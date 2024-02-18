@@ -124,7 +124,7 @@ def callback():
     
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
-    return redirect('http://localhost:3000')
+    return redirect('http://localhost:3000/dashboard')
 
 
 @app.route("/logout", methods=['GET', 'POST'])

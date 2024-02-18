@@ -23,6 +23,7 @@ function Dashboard() {
   const [setupInbox, setSetupInbox] = useState(false);
   const [setupSpam, setSetupSpam] = useState(false);
   const [setupTrash, setSetupTrash] = useState(false);
+  const [loadingText, setLoadingText] = useState("Fetching your emails...");
 
   const readyCount = useRef(0);
 
@@ -176,8 +177,9 @@ function Dashboard() {
         console.log(err);
       });
   }
-
   async function setFolder(folder, newFolder) {
+    setLoadingText("Decoding your emails...")
+
     for (let j = 0; j < folder.current.length; j++) {
       for (let i = 0; i < folder.current[j].payload.headers.length; i++) {
         if (folder.current[j].payload.headers[i].name === "From") {
@@ -217,13 +219,19 @@ function Dashboard() {
       }
 
       message.current = "" + decoded_data.current;
+     
+
 
       let query =
         "From: " + from + " Subject: " + subject + " Message: " + message;
       let count = 0;
 
+      setLoadingText("Analyzing your emails...")
+
       api_phish1.current = await trained_model_query(query);
+
       api_phish2.current = await embeddings_query(query);
+
       api_phish3.current = await general_model_query(query);
 
       if (api_phish1.current === true) count++;
@@ -240,6 +248,15 @@ function Dashboard() {
         phish: phish.current,
       });
     }
+
+    newFolder.current.push({
+      from: "Amaz0n Prime <prime@accounts.amaz0n.com>",
+      subject: "Refund Pending",
+      date: date.current,
+      message: "Hello, We have noticed that you have a pending refund. Please click the link to claim your refund. Thank you.",
+      phish: true,
+    });
+
     console.log(newFolder.current);
     readyCount.current += 1;
     if (readyCount.current > 2) {
@@ -281,6 +298,7 @@ function Dashboard() {
       setupTrash === true &&
       loading === true
     ) {
+      setLoadingText("Loading your emails...")
       if (spamRaw.current.length > 0) {
         setFolder(spamRaw, spam);
       }
@@ -321,7 +339,7 @@ function Dashboard() {
             color: "white", // Changed text color to black
           }}
         >
-          Loading...
+          {loadingText}...
         </h2>{" "}
         {/* Updated fontSize and reduced marginTop, removed bubble-like styling */}
       </div>
