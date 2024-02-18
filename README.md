@@ -14,6 +14,19 @@ At GotPhish, we protect your business from phishing attacks with our advanced AI
 
 ---
 
+## About The Project
+
+### Home Page
+![home](./client/src/images/project1.PNG)
+
+### Login Page
+![login](./client/src/images/project2.PNG)
+
+### Dashboard
+![dashboard](./client/src/images/project3.PNG)
+
+---
+
 ## Getting Started
 
 ### npm
@@ -32,3 +45,19 @@ npm install npm@latest -g
     ```
     pip install -r requirements.txt
     ```
+
+---
+
+## Built With
+
+- React
+- Flask
+- Tailwind
+- OpenAI
+- Cohere
+- Pinecone
+- Google Cloud
+
+---
+
+## 
