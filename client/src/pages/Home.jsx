@@ -64,6 +64,9 @@ const Home = () => {
                     <p className='text-black md:text-xl sm:text-3xl text-2xl font-semibold py-8'>
                     🌐 Utilizing the Google API for seamless email retrieval and the Cohere API for intelligent analysis, we ensure a smooth sailing experience for our users. Our backend, equipped with Kaggle's phishing dataset, dives deep into the digital waves to tag overall email safety. So, why get caught in phishing nets when you can ride the Got Phish wave?
                     </p>
+                    <p className='text-black md:text-xl sm:text-3xl text-2xl font-semibold py-8'>
+                      Copyright &copy; 2024 GotPhish?
+                    </p>
                     </div>
                 </div>
             </div>
