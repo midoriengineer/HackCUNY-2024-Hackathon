@@ -180,6 +180,8 @@ function Dashboard() {
 
   async function setFolder(folder, newFolder) {
     for (let j = 0; j < folder.current.length; j++) {
+
+      if (folder[j].payload) {
   
       for (let i = 0; i < folder.current[j].payload.headers.length; i++) {
         if (folder.current[j].payload.headers[i].name === "From") {
@@ -235,6 +237,7 @@ function Dashboard() {
     if (readyCount.current > 2) {
       setLoading(false);
     }
+  }
 
   }
 
