@@ -158,7 +158,7 @@ def google_token():
     if os.path.exists(file_path):
         return send_file(file_path, mimetype='application/json')
     else:
-        return ValueError("No token file found")
+        return jsonify({"error": "No token file found"})
 
 
 @app.route("/embeddings_query", methods=['POST'])
