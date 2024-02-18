@@ -49,7 +49,7 @@ npm install npm@latest -g
 ---
 
 ## Built With
-
+<img src="https://github.com/yurijserrano/Github-Profile-Readme-Logos/blob/master/frameworks/react.svg">
 - React
 - Flask
 - Tailwind
