@@ -196,21 +196,18 @@ function Dashboard() {
       }
 
       let decodedString
-      let q_string
       
-      if(!folder.current[j].payload.parts){
+      if(!folder.current[j].payload.parts || !folder.current[j].payload.parts[0].body|| !folder.current[j].payload.parts[0].body.data){
         decodedString = folder.current[j].snippet
       }
       else{
-        q_string = folder.current[j].payload.parts[0].body.data
-
         decodedString = await fetch("http://localhost:5000/decode", {
           method: 'POST',
           mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ query: q_string }),
+          body: JSON.stringify({ query: folder.current[j].payload.parts[0].body.data }),
         })
           .then(response => response.json())
           .then(decodedData => {
