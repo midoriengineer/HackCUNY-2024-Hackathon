@@ -309,36 +309,21 @@ function Dashboard() {
         <img
           src={fish2}
           alt="Loading"
-          style={{ width: "300px", height: "300px" }} // Updated width and height
+          style={{ width: "200px", height: "200px" }} // Updated width and height
         />
         <p
           style={{
             marginTop: "10px",
             marginLeft: "40px",
-            fontSize: "24px",
+            fontSize: "16px", // Updated font size to be smaller than fish
             background: "#b3e0ff",
             padding: "10px",
             borderRadius: "20px",
-            position: "relative",
-            animation: "bubbles 1s ease infinite",
           }}
         >
           Loading...
         </p>{" "}
-        {/* Updated fontSize and reduced marginTop, added bubble-like styling and animation */}
-        <style>{`
-          @keyframes bubbles {
-            0% {
-              transform: translateY(0) scale(1);
-            }
-            50% {
-              transform: translateY(-20px) scale(1.2);
-            }
-            100% {
-              transform: translateY(0) scale(1);
-            }
-          }
-        `}</style>
+        {/* Updated fontSize and reduced marginTop, added bubble-like styling */}
       </div>
     );
   }
