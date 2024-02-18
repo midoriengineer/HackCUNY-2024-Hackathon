@@ -2,11 +2,11 @@ import React from "react";
 
 function Trash({folder}) {
   return (
-    <div className="p-4 bg-light rounded-lg shadow">
-      <h2 className="text-2xl font-semibold mb-4">Trash</h2>
+    <div className="p-4 bg-transparent rounded-lg ">
+      <h1 className="font-semibold text-white mb-4">Trash</h1>
 
       {folder.length < 1 ? (
-        <p className="text-gray-500">This folder is empty.</p>
+        <h4 className="text-white">This folder is empty.</h4>
       ) : (
         folder.map((email, index) => (
           <div

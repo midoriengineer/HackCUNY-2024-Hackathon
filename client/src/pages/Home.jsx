@@ -7,31 +7,33 @@ import fish from "../images/gotphishfish2.png";
 const Home = () => {
   return (
     <div className="text-white">
-      <div className="max-w-[800px] mt-[-70px] w-full h-screen mx-auto text-center flex flex-col justify-center items-center">
-        <text className="text-6xl font-extrabold font-mono text-white">
-        <span className="text-white">Got Phish?</span>{" "}
-          
-        </text>
-        <img className="w-28 h-auto max-w-full" src={fish} alt="image description" />
+      <div className="card text-center background-image" style={{ height: '700px', backgroundColor: 'transparent' }}>
+      <div className="card-body">
+        <div className="max-w-[800px] mt-[-70px] w-full h-screen mx-auto text-center flex flex-col justify-center items-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold font-mono text-white mb-4">
+            Got Phish?{' '}
+          </h1>
+          <img className="w-28 h-auto max-w-full mb-6" src={fish} alt="image description" />
 
-        <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 text-white">
-          Secure Your Inbox with{" "}
-          <text className="font-extrabold italic text-[#FEB500]">
-            Confidence
-          </text>
-        </h1>
-        <div className="flex justify-center items-center"></div>
-        <p className="md:text-2xl text-xl font-bold text-white">
-          Protect your business from phishing attacks with our advanced
-          AI-driven email security solution.
-        </p>
-        <button
-          onClick={() => (window.location.href = "/login")}
-          className="bg-[#FEB500] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black shadow-lg"
-        >
-          Get Started
-        </button>
+          <h1 className="md:text-6xl sm:text-5xl text-3xl font-bold py-4 text-white">
+            Secure Your Inbox with{' '}
+            <span className="font-extrabold italic text-[#FF7210]">Confidence</span>
+          </h1>
+
+          <p className="md:text-xl text-lg font-semibold text-white mb-8">
+            Protect your business from phishing attacks with our advanced
+            AI-driven email security solution.
+          </p>
+
+          <button
+            onClick={() => (window.location.href = '/login')}
+            className="bg-[#FEB500] w-[200px] rounded-md font-medium my-6 py-3 text-black shadow-lg hover:bg-[#FFD700] transition duration-300 focus:outline-none focus:shadow-outline transform hover:scale-105"
+          >
+            Get Started
+          </button>
+        </div>
       </div>
+    </div>
 
       <div className="bg-white rounded-2xl max-w-[1500px] mx-auto my-8 py-16 px-4 shadow-2xl">
         <div className="max-w-[1240px] mx-auto grid md:grid-cols-2">
@@ -41,7 +43,7 @@ const Home = () => {
             alt="/"
           />
           <div className="flex flex-col justify-center">
-            <p className="text-[#FEB500] text-2xl font-extrabold pb-4">
+            <p className="text-[#FF7210] text-2xl font-extrabold pb-4">
               Tired of Phishers trying to steal your data?
             </p>
             <h1 className="text-black md:text-4xl sm:text-3xl text-2xl font-bold py-4">
@@ -66,7 +68,7 @@ const Home = () => {
       <div className="bg-white rounded-2xl max-w-[1500px] mx-auto my-24 py-16 px-4 shadow-2xl">
         <div className="max-w-[1240px] mx-auto grid md:grid-cols-2">
           <div className="flex flex-col justify-center">
-            <p className="text-[#FEB500] text-2xl font-extrabold pb-4">
+            <p className="text-[#FF7210] text-2xl font-extrabold pb-4">
               Strengthen Your Defenses Against Rising Cyber Threats
             </p>
             <h1 className="text-black md:text-4xl sm:text-3xl text-2xl font-bold py-4">
@@ -104,7 +106,7 @@ const Home = () => {
         <div className="bg-white rounded-2xl max-w-[1500px] mx-auto my-24 py-16 px-4 shadow-2xl">
           <div className="max-w-[1240px] mx-auto">
             <div className="flex flex-col justify-center">
-              <p className="text-[#FEB500] text-6xl font-bold pb-12">
+              <p className="text-[#FF7210] text-6xl font-bold pb-12">
                 About Us
               </p>
               <h1 className="text-black md:text-4xl sm:text-3xl text-2xl font-bold py-2">

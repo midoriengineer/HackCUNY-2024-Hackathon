@@ -297,6 +297,8 @@ function Dashboard() {
 
   if (loading === true) {
     return (
+      <div className="flex items-center justify-center h-screen bg-transparent background-image">
+            <div className="text-center bg-transparent">
       <div
         style={{
           display: "flex",
@@ -311,17 +313,19 @@ function Dashboard() {
           alt="Loading"
           style={{ width: "200px", height: "200px" }} // Updated width and height
         />
-        <p
+        <h2
           style={{
             marginTop: "10px",
             marginLeft: "40px",
             fontSize: "24px", // Increased font size
-            color: "black", // Changed text color to black
+            color: "white", // Changed text color to black
           }}
         >
           Loading...
-        </p>{" "}
+        </h2>{" "}
         {/* Updated fontSize and reduced marginTop, removed bubble-like styling */}
+      </div>
+      </div>
       </div>
     );
   }
@@ -329,14 +333,16 @@ function Dashboard() {
   return (
     <div>
       <Navbar />
+      <div className="h-screen bg-transparent background-image">
+            <div className="bg-transparent">
       <div className="flex flex-col md:flex-row h-screen">
         <Sidebar onPageChange={handlePageChange} />
-        <div className="flex-1" style={{ margin: "0 20px"}}>
+        <div className="flex-1" style={{ margin: "0 20px",overflowY: "auto"}}>
           {currentPage === "inbox" && <Inbox folder={inbox.current} />}
           {currentPage === "spam" && <Spam folder={spam.current} />}
           {currentPage === "trash" && <Trash folder={trash.current} />}
         </div>
-      </div>
+      </div></div></div>
     </div>
   );
 }

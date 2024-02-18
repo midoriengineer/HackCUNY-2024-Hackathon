@@ -21,10 +21,23 @@ html {
 }
 
 body {
-  background-image: "./images/city.png";
   background: linear-gradient(90deg, #0052d4, #4364f7, #6fb1fc) no-repeat;
   background-size: 100% 200%;
   animation: bg-animation 10s infinite linear;
+}
+
+.background-image {
+  background-image: url('./images/city2.png');
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.inbox-background {
+  /* position: fixed; */
+  background-image: url('./images/city2.png');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 @keyframes bg-animation {
