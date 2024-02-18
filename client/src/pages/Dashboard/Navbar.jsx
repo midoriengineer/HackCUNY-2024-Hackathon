@@ -4,23 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavBar = () => {
   return (
-    <div
-      className="left-nav-bar bg-gradient-to-b from-purple-600 via-pink-600 to-orange-500 col-2 p-0"
-      style={{
-        minHeight: "100vh",
-        borderRight: "1px solid #e0e0e0",
-        boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-      }}
-    >
-      <div
-        className="logo text-white p-3"
-        style={{
-          fontSize: "1.5rem",
-          fontWeight: "bold",
-          borderBottom: "1px solid #e0e0e0",
-        }}
-      >
-        Email Dashboard
+    <div className="bg-white p-4 flex justify-between items-center">
+      <h1 className="text-2xl font-bold">Email Dashboard</h1>
+      <div className="flex items-center">
+        <FaUserCircle size={32} />
+        <span className="ml-2">John Doe</span>
       </div>
       <ul className="nav flex-column">
         <li className="nav-item">
