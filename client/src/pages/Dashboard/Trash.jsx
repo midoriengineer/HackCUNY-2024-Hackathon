@@ -2,7 +2,7 @@ import React from "react";
 
 function Trash({folder}) {
   return (
-    <div className="p-4 bg-white rounded-lg shadow">
+    <div className="p-4 bg-white rounded-lg shadow h-screen">
       <h2 className="text-xl font-semibold mb-2">Trash</h2>
       {folder.length < 1 ? <p>This folder is empty.</p> : 
         folder.map((email, index) => (

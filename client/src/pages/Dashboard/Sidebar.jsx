@@ -6,25 +6,25 @@ function Sidebar({ onPageChange }) {
   return (
     <div className="bg-gray-800 text-white p-4 rounded-lg">
       <button
-        className="flex items-center p-2 mb-2 text-sm leading-5 font-medium rounded-lg hover:bg-gray-700"
+        className="flex items-center px-4 py-6 text-sm leading-5 font-medium rounded-lg hover:bg-gray-700"
         onClick={() => onPageChange("inbox")}
       >
-        <FaInbox size={20} />
-        <span className="ml-2">Inbox</span>
+        <FaInbox size={30} />
+        <span className="ml-2 text-xl">Inbox</span>
       </button>
       <button
-        className="flex items-center p-2 mb-2 text-sm leading-5 font-medium rounded-lg hover:bg-gray-700"
+        className="flex items-center px-4 py-6 mb-2 text-sm leading-5 font-medium rounded-lg hover:bg-gray-700"
         onClick={() => onPageChange("spam")}
       >
-        <FaPaperPlane size={20} />
-        <span className="ml-2">Spam</span>
+        <FaPaperPlane size={30} />
+        <span className="ml-2 text-xl">Spam</span>
       </button>
       <button
-        className="flex items-center p-2 mb-2 text-sm leading-5 font-medium rounded-lg hover:bg-gray-700"
+        className="flex items-center px-4 py-6 text-sm leading-5 font-medium rounded-lg hover:bg-gray-700"
         onClick={() => onPageChange("trash")}
       >
-        <FaTrash size={20} />
-        <span className="ml-2">Trash</span>
+        <FaTrash size={30} />
+        <span className="ml-2 text-xl">Trash</span>
       </button>
     </div>
   );
