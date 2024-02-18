@@ -43,6 +43,7 @@ function Dashboard() {
   const date= useRef("")
   const message= useRef("")
   const phish = useRef(false)
+  const decoded_data = useRef()
 
   const api_phish1 = useRef(false)
   const api_phish2 = useRef(false)
@@ -180,8 +181,6 @@ function Dashboard() {
 
   async function setFolder(folder, newFolder) {
     for (let j = 0; j < folder.current.length; j++) {
-
-      if (folder.current[j].payload && folder.current[j].payload.headers) {
   
       for (let i = 0; i < folder.current[j].payload.headers.length; i++) {
         if (folder.current[j].payload.headers[i].name === "From") {
@@ -194,16 +193,13 @@ function Dashboard() {
           date.current = folder.current[j].payload.headers[i].value
         }
       }
-
-      let decodedString
       
       if(!folder.current[j].payload.parts || !folder.current[j].payload.parts[0].body|| !folder.current[j].payload.parts[0].body.data){
-        decodedString = folder.current[j].snippet
+        decoded_data.current = folder.current[j].snippet
       }
       else{
-        decodedString = await fetch("http://localhost:5000/decode", {
+        decoded_data.current = await fetch("http://localhost:5000/decode", {
           method: 'POST',
-          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -219,7 +215,7 @@ function Dashboard() {
           });
         }
 
-        message.current = "" + decodedString
+        message.current = "" + decoded_data.current
 
         let query = "From: " + from + " Subject: " + subject + " Message: " + message
         let count = 0
@@ -238,13 +234,13 @@ function Dashboard() {
         newFolder.current.push({
           "from": from.current, "subject": subject.current, "date": date.current, "message": message.current, "phish": phish.current
 
-        });
-      
+        })
     }
+    console.log(newFolder.current)
     readyCount.current += 1
     if (readyCount.current > 2) {
       setLoading(false);
-    }
+  
   }
 
   }
