@@ -12,3 +12,23 @@ At GotPhish, we protect your business from phishing attacks with our advanced AI
 
 - 🌐 Utilizing the Google API for seamless email retrieval and the Cohere API for intelligent analysis, we ensure a smooth sailing experience for our users. Our backend, equipped with Kaggle's phishing dataset, dives deep into the digital waves to tag overall email safety. So, why get caught in phishing nets when you can ride the Got Phish wave?
 
+---
+
+## Getting Started
+
+### npm
+```
+npm install npm@latest -g
+```
+
+### Installation
+1. Get your API keys for Google Cloud, OpenAI, Cohere, and Pinecone, then create `.env` and place them in.
+2. Clone the repo.
+3. `cd` into `client` dir
+    ```
+    npm install
+    ```
+4. `cd` into `server` dir, and create a new virtual environment `venv` and activate, then install all packages
+    ```
+    pip install -r requirements.txt
+    ```
