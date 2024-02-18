@@ -45,6 +45,14 @@ npm install npm@latest -g
     ```
     pip install -r requirements.txt
     ```
+5. To start backend server, in the server dir:
+    ```
+    python server.py
+    ```
+6. To start frontend client, in the client dir:
+    ```
+    npm start
+    ```
 
 ---
 
@@ -59,4 +67,4 @@ npm install npm@latest -g
 
 ---
 
-## 
+##
