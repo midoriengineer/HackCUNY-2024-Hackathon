@@ -21,17 +21,19 @@ html {
 }
 
 body {
-  background: linear-gradient(45deg, #845ec2, #d65db1, #ff6f91, #ff9671, #ffc75f, #f9f871) no-repeat;
-  background-size: 400%;
-  animation: bg-animation 12s infinite alternate;
+  background: linear-gradient(90deg, #0052d4, #4364f7, #6fb1fc) no-repeat;
+  background-size: 100% 200%;
+  animation: bg-animation 10s infinite linear;
 }
 
 @keyframes bg-animation {
   0% {
-    background-position: left;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    background-position: right;
+    background-position: 0% 50%;
   }
 }
-
