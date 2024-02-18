@@ -206,6 +206,7 @@ function Dashboard() {
 
         decodedString = await fetch("http://localhost:5000/decode", {
           method: 'POST',
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -220,7 +221,7 @@ function Dashboard() {
             console.error('Error sending POST request to Flask:', error);
           });
         }
-        
+
         message.current = "" + decodedString
 
         let query = "From: " + from + " Subject: " + subject + " Message: " + message
