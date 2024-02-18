@@ -315,15 +315,13 @@ function Dashboard() {
           style={{
             marginTop: "10px",
             marginLeft: "40px",
-            fontSize: "16px", // Updated font size to be smaller than fish
-            background: "#b3e0ff",
-            padding: "10px",
-            borderRadius: "20px",
+            fontSize: "24px", // Increased font size
+            color: "black", // Changed text color to black
           }}
         >
           Loading...
         </p>{" "}
-        {/* Updated fontSize and reduced marginTop, added bubble-like styling */}
+        {/* Updated fontSize and reduced marginTop, removed bubble-like styling */}
       </div>
     );
   }
