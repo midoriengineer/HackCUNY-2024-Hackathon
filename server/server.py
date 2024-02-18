@@ -11,10 +11,8 @@ import json
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-
 import asyncio
+import base64
 
 import cohere
 import pandas as pd
@@ -42,8 +40,7 @@ token_file_path = 'google_access_token.json'
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
     scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", 
-            "https://www.googleapis.com/auth/gmail.modify", "https://mail.google.com/",
-            'https://www.googleapis.com/auth/drive.metadata.readonly',"openid"],
+            "https://www.googleapis.com/auth/gmail.modify", "https://mail.google.com/","openid"],
     redirect_uri="http://localhost:5000/callback"
                                      )
 
@@ -125,7 +122,6 @@ def callback():
         audience=GOOGLE_CLIENT_ID
     )
     
-    session['credentials'] = credentials_to_dict(credentials)
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
     return redirect('http://localhost:3000')
@@ -162,7 +158,7 @@ def google_token():
     if os.path.exists(file_path):
         return send_file(file_path, mimetype='application/json')
     else:
-        return "File not found", 404
+        return ValueError("No token file found")
 
 
 @app.route("/embeddings_query", methods=['POST'])
@@ -211,6 +207,24 @@ def general_model_query():
         ]
     )
     return jsonify(completion.choices[0].message.content)
+
+
+def base64_to_bytes(base64_string):
+    bin_string = base64.urlsafe_b64decode(base64_string)
+    return bytearray(bin_string)
+
+def bytes_to_base64(byte_array):
+    bin_string = bytes(byte_array).decode('utf-8')
+    return base64.urlsafe_b64encode(bin_string.encode('utf-8')).decode('utf-8')
+
+
+@app.route("/decode", methods=['POST'])
+def decode():
+    data = request.get_json()
+    query = data.get('query')
+    decoded_bytes = base64_to_bytes(query)
+    decoded_data = bytes(decoded_bytes).decode('utf-8')
+    return jsonify({'decoded_data': decoded_data})
 
 if __name__ == "__main__":
     app.run(debug=True)

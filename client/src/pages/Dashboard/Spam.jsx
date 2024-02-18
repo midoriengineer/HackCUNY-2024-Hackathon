@@ -1,11 +1,15 @@
 import React from "react";
 
-function Spam() {
+function Spam({folder}) {
   return (
     <div className="p-4 bg-white rounded-lg shadow">
       <h3 className="text-lg font-semibold mb-2">Spam</h3>
-      {/* Add spam component here */}
-    </div>
+      </div>
+    // <div className="spam">
+    //   <h3>Spam</h3>
+    //   {folder.length < 1 ? <p>This folder is empty.</p>: null }
+
+    // </div>
   );
 }
 
