@@ -1,5 +1,7 @@
 import React from 'react';
 import EmailModal from './EmailModal';
+import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
+import PhishingOutlinedIcon from '@mui/icons-material/PhishingOutlined';
 
 function Inbox({ folder }) {
   const [selectedEmail, setSelectedEmail] = React.useState(null);
@@ -22,25 +24,38 @@ function Inbox({ folder }) {
         folder.map((email, index) => (
           <div
             key={index}
-            className="flex items-center justify-between mb-4 p-6 bg-white rounded-lg shadow-md hover:bg-gray-50 transition-all duration-300"
-          >
-            <div>
-              <p className="text-xl font-bold text-gray-800">{email.subject}</p>
-              <p className="text-sm text-gray-600">{email.from}</p>
+            className="cursor-pointer flex items-center justify-between mb-4 p-6 bg-white rounded-lg shadow-md hover:bg-gray-50 transition-all duration-300"
+            onClick={() => handleEmailClick(email)}>
+              <div>
+                <p className="text-xl font-bold text-gray-800">{email.subject}</p>
+                <p className="text-sm text-gray-600">{email.from}</p>
+              </div>
+              <button
+                style={{
+                  background: email.phish ? "#ff4d4f" : "#52c41a",
+                  color: "white",
+                }}
+                className="px-4 py-2 rounded-full"
+              >
+                {email.phish ? (
+                  <div className="flex">
+                    <PhishingOutlinedIcon />
+                    <span style={{ marginLeft: '2px' }}>Phishing</span>
+                  </div>
+                ) : (
+                  <div className="flex">
+                    <GppGoodOutlinedIcon />
+                    <span style={{ marginLeft: '2px' }}>Safe</span>
+                  </div>
+                )}
+              </button>
             </div>
-            <button
-              style={{
-                background: email.phish ? "#ff4d4f" : "#52c41a",
-                color: "white",
-              }}
-              className="px-4 py-2 rounded-full"
-            >
-              {email.phish ? 'Phishing' : 'Safe'}
-            </button>
-          </div>
-        ))
-      )}
-    </div>
+          ))
+        )}
+        {selectedEmail && (
+          <EmailModal email={selectedEmail} onClose={handleModalClose} />
+        )}
+      </div>
   );
 }
 

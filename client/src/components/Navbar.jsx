@@ -61,7 +61,7 @@ const Navbar = () => {
                             <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
                                 Login
                             </Link>
-                        </li> :  <li className="p-4"><button onClick={handleLogout}>Logout</button></li>}
+                        </li> :  <li className="mx-4 p-4 border-2 border-white rounded-full font-bold"><button onClick={handleLogout}>Logout</button></li>}
                     </ul>
                 </div>
             </div>

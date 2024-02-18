@@ -4,7 +4,7 @@ import { FaInbox, FaPaperPlane, FaFile, FaTrash } from "react-icons/fa";
 
 function Sidebar({ onPageChange }) {
   return (
-    <div className="bg-gray-800 text-white p-4 rounded-lg">
+    <div className="bg-gray-800 text-white p-4 rounded-lg h-screen">
       <button
         className="flex items-center px-4 py-6 text-sm leading-5 font-medium rounded-lg hover:bg-gray-700"
         onClick={() => onPageChange("inbox")}
