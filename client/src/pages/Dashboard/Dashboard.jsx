@@ -331,7 +331,7 @@ function Dashboard() {
       <Navbar />
       <div className="flex flex-col md:flex-row h-screen">
         <Sidebar onPageChange={handlePageChange} />
-        <div className="flex-1">
+        <div className="flex-1" style={{ margin: "0 20px"}}>
           {currentPage === "inbox" && <Inbox folder={inbox.current} />}
           {currentPage === "spam" && <Spam folder={spam.current} />}
           {currentPage === "trash" && <Trash folder={trash.current} />}

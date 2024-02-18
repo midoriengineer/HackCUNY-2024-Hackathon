@@ -2,20 +2,21 @@ import React from "react";
 import Computer from "../images/home-page1.jpg";
 import CyberThief from "../images/home-page2.jpg";
 import { Element } from "react-scroll";
+import fish from "../images/gotphishfish2.png";
 
 const Home = () => {
   return (
     <div className="text-white">
-      <div className="max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center items-center">
-        <text class="text-6xl font-extrabold font-mono text-white">
-          🎣 <span className="text-white">Got Phish?</span>{" "}
-          <span role="img" aria-label="fish">
-            🐟
-          </span>
+      <div className="max-w-[800px] mt-[-70px] w-full h-screen mx-auto text-center flex flex-col justify-center items-center">
+        <text className="text-6xl font-extrabold font-mono text-white">
+        <span className="text-white">Got Phish?</span>{" "}
+          
         </text>
+        <img className="w-28 h-auto max-w-full" src={fish} alt="image description" />
+
         <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 text-white">
           Secure Your Inbox with{" "}
-          <text className="font-extrabold italic text-[#00df9a]">
+          <text className="font-extrabold italic text-[#FEB500]">
             Confidence
           </text>
         </h1>
@@ -26,7 +27,7 @@ const Home = () => {
         </p>
         <button
           onClick={() => (window.location.href = "/login")}
-          className="bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black shadow-lg"
+          className="bg-[#FEB500] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black shadow-lg"
         >
           Get Started
         </button>
@@ -40,7 +41,7 @@ const Home = () => {
             alt="/"
           />
           <div className="flex flex-col justify-center">
-            <p className="text-[#00df9a] text-2xl font-extrabold pb-4">
+            <p className="text-[#FEB500] text-2xl font-extrabold pb-4">
               Tired of Phishers trying to steal your data?
             </p>
             <h1 className="text-black md:text-4xl sm:text-3xl text-2xl font-bold py-4">
@@ -54,7 +55,7 @@ const Home = () => {
             </p>
             <button
               onClick={() => (window.location.href = "/login")}
-              className="bg-black text-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 shadow-lg"
+              className="bg-black text-[#FEB500] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 shadow-lg"
             >
               Get Started
             </button>
@@ -65,7 +66,7 @@ const Home = () => {
       <div className="bg-white rounded-2xl max-w-[1500px] mx-auto my-24 py-16 px-4 shadow-2xl">
         <div className="max-w-[1240px] mx-auto grid md:grid-cols-2">
           <div className="flex flex-col justify-center">
-            <p className="text-[#00df9a] text-2xl font-extrabold pb-4">
+            <p className="text-[#FEB500] text-2xl font-extrabold pb-4">
               Strengthen Your Defenses Against Rising Cyber Threats
             </p>
             <h1 className="text-black md:text-4xl sm:text-3xl text-2xl font-bold py-4">
@@ -86,7 +87,7 @@ const Home = () => {
                   "_blank"
                 )
               }
-              className="bg-black text-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 shadow-lg"
+              className="bg-black text-[#FEB500] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 shadow-lg"
             >
               Go To Source
             </button>
@@ -103,7 +104,7 @@ const Home = () => {
         <div className="bg-white rounded-2xl max-w-[1500px] mx-auto my-24 py-16 px-4 shadow-2xl">
           <div className="max-w-[1240px] mx-auto">
             <div className="flex flex-col justify-center">
-              <p className="text-[#00df9a] text-6xl font-bold pb-12">
+              <p className="text-[#FEB500] text-6xl font-bold pb-12">
                 About Us
               </p>
               <h1 className="text-black md:text-4xl sm:text-3xl text-2xl font-bold py-2">

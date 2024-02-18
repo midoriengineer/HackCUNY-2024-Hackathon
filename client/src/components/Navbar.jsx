@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
 import gotPhishLogo from "../images/cropped-logo.png"
 import { useEffect, useState } from "react";
+import logo from "../images/gotphish.png"
 
 const Navbar = () => {
     const [googleToken, setGoogleToken] = useState();
@@ -37,7 +38,7 @@ const Navbar = () => {
         <header>
             <div className="flex justify-between items-center max-w-[1240px] mx-auto p-4">
                 <div className="nav-logo">
-                    <img className="w-28 h-auto max-w-full" src={gotPhishLogo} alt="image description" />
+                    <img className="w-28 h-auto max-w-full" src={logo} alt="image description" />
                 </div>
                 <div className="text-white">
                     <ul className="flex">

@@ -21,6 +21,7 @@ html {
 }
 
 body {
+  background-image: "./images/city.png";
   background: linear-gradient(90deg, #0052d4, #4364f7, #6fb1fc) no-repeat;
   background-size: 100% 200%;
   animation: bg-animation 10s infinite linear;
