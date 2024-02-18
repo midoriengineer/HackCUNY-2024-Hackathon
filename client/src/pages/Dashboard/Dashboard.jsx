@@ -181,7 +181,7 @@ function Dashboard() {
   async function setFolder(folder, newFolder) {
     for (let j = 0; j < folder.current.length; j++) {
 
-      if (folder[j].payload) {
+      if (folder.current[j].payload && folder.current[j].payload.headers) {
   
       for (let i = 0; i < folder.current[j].payload.headers.length; i++) {
         if (folder.current[j].payload.headers[i].name === "From") {
@@ -195,13 +195,22 @@ function Dashboard() {
         }
       }
 
+      let q_string
+      
+      if(!folder.current[j].payload.parts){
+        q_string = folder.current[j].snippet
+      }
+      else{
+        q_string = folder.current[j].payload.parts[0].body.data
+      }
+
 
         const decodedString = await fetch("http://localhost:5000/decode", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ query: folder.current[j].payload.parts[0].body.data }),
+          body: JSON.stringify({ query: q_string }),
         })
           .then(response => response.json())
           .then(decodedData => {
