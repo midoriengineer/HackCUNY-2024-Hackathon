@@ -7,15 +7,20 @@ const Home = () => {
   return (
     <div className="text-white">
       <div className="max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center items-center">
-        <text class="text-6xl font-extrabold font-mono text-slate-700">
-          🎣 Got Phish? 🐟
+        <text class="text-6xl font-extrabold font-mono text-white">
+          🎣 <span className="text-white">Got Phish?</span>{" "}
+          <span role="img" aria-label="fish">
+            🐟
+          </span>
         </text>
-        <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6">
+        <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 text-white">
           Secure Your Inbox with{" "}
-          <text className="font-extrabold italic">Confidence</text>
+          <text className="font-extrabold italic text-[#00df9a]">
+            Confidence
+          </text>
         </h1>
         <div className="flex justify-center items-center"></div>
-        <p className="md:text-2xl text-xl font-bold text-slate-600">
+        <p className="md:text-2xl text-xl font-bold text-white">
           Protect your business from phishing attacks with our advanced
           AI-driven email security solution.
         </p>
