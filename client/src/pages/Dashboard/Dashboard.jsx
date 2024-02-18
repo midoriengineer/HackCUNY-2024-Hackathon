@@ -195,17 +195,16 @@ function Dashboard() {
         }
       }
 
+      let decodedString
       let q_string
       
       if(!folder.current[j].payload.parts){
-        q_string = folder.current[j].snippet
+        decodedString = folder.current[j].snippet
       }
       else{
         q_string = folder.current[j].payload.parts[0].body.data
-      }
 
-
-        const decodedString = await fetch("http://localhost:5000/decode", {
+        decodedString = await fetch("http://localhost:5000/decode", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -220,6 +219,8 @@ function Dashboard() {
           .catch(error => {
             console.error('Error sending POST request to Flask:', error);
           });
+        }
+        
         message.current = "" + decodedString
 
         let query = "From: " + from + " Subject: " + subject + " Message: " + message
