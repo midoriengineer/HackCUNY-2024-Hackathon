@@ -16,17 +16,15 @@ function Dashboard() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100">
       <Navbar />
-      <div style={{background:"#fff", width:"100%"}}>
-        <Container>
-          <Row>
-            <Col sm={4}><Sidebar onPageChange={handlePageChange} /></Col>
-            <Col sm={8}>{currentPage === "inbox" && <Inbox />}
-        {currentPage === "spam" && <Spam />}
-        {currentPage === "trash" && <Trash />}</Col>
-          </Row>
-        </Container>        
+      <div className="flex flex-col md:flex-row">
+        <Sidebar onPageChange={handlePageChange} />
+        <div className="flex-1 p-4">
+          {currentPage === "inbox" && <Inbox />}
+          {currentPage === "spam" && <Spam />}
+          {currentPage === "trash" && <Trash />}
+        </div>
       </div>
     </div>
   );

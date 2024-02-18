@@ -3,11 +3,11 @@ import { FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
   return (
-    <div className="navbar">
-      <h1>Email Dashboard</h1>
-      <div className="user">
+    <div className="bg-white p-4 flex justify-between items-center">
+      <h1 className="text-2xl font-bold">Email Dashboard</h1>
+      <div className="flex items-center">
         <FaUserCircle size={32} />
-        <span>John Doe</span>
+        <span className="ml-2">John Doe</span>
       </div>
     </div>
   );
