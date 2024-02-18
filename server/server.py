@@ -127,7 +127,7 @@ def callback():
     session['credentials'] = credentials_to_dict(credentials)
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
-    return redirect('/test')
+    return redirect('http://localhost:3000')
 
 
 @app.route("/logout", methods=['GET', 'POST'])
