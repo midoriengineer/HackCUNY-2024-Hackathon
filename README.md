@@ -1,7 +1,7 @@
 # Got Phish?
 ![GotPhishLogo](./client/src/images/gotphish.png)
 
----
+### [View on Devpost](https://devpost.com/software/got-phish)
 
 ## Secure Your Inbox with Confidence
 At GotPhish, we protect your business from phishing attacks with our advanced AI-driven email security solution.
@@ -11,8 +11,6 @@ At GotPhish, we protect your business from phishing attacks with our advanced AI
 - 🏖️ Log in with your Gmail, and let our AI, powered by a dataset sea, analyze your emails. We'll display a clear signal: which emails are likely safe and which ones are phishing – making your inbox a haven.
 
 - 🌐 Utilizing the Google API for seamless email retrieval and the Cohere API for intelligent analysis, we ensure a smooth sailing experience for our users. Our backend, equipped with Kaggle's phishing dataset, dives deep into the digital waves to tag overall email safety. So, why get caught in phishing nets when you can ride the Got Phish wave?
-
----
 
 ## About The Project
 
@@ -25,7 +23,6 @@ At GotPhish, we protect your business from phishing attacks with our advanced AI
 ### Dashboard
 ![dashboard](./client/src/images/project3.PNG)
 
----
 
 ## Getting Started
 
@@ -54,8 +51,6 @@ npm install npm@latest -g
     npm start
     ```
 
----
-
 ## Built With
 - React
 - Flask
@@ -66,5 +61,3 @@ npm install npm@latest -g
 - Google Cloud
 
 ---
-
-##
